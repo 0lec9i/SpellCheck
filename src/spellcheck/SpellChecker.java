@@ -19,10 +19,7 @@ public class SpellChecker implements ISpellChecker {
         while(in.hasNext()){
             this.dictionary.add(in.next());
         }
-
         in.close();
-
-        return;
     }
 
     @Override
@@ -55,7 +52,7 @@ public class SpellChecker implements ISpellChecker {
             }
         }
 
-        if(winner != ""){
+        if(!winner.equals("")){
             return winner;
         }
 
@@ -75,12 +72,12 @@ public class SpellChecker implements ISpellChecker {
             }
         }
 
-        if (winner != "") return winner;
+        if (!winner.equals("")) return winner;
         else return null;
 
     }
 
-    public static String[] getClosestWords(String word){
+    private static String[] getClosestWords(String word){
 
         int n = word.length();
         String[] words = new String[53*n + 25]; // = n + n - 1 + 25*n + 26*(n+1)
@@ -111,7 +108,7 @@ public class SpellChecker implements ISpellChecker {
                 words[2*n - 1 + i*25 + j + offset] = word.substring(0,i) + (char)('a' + j) + word.substring(i+1);
             }
         }
-        //  Insertion: add a letter between all letters, at beginning and end. size 26*(n+1)
+        //  Insertion: add a letter between all letters
         for (int i = 0; i < n+1; i++){
             for (int j = 0; j < 26; j++){
                 words[27*n - 1 + i*26 + j] = word.substring(0,i) + (char)('a' + j) + word.substring(i);
@@ -147,12 +144,9 @@ public class SpellChecker implements ISpellChecker {
       SpellChecker c = new SpellChecker();
       c.useDictionary("dictionary.txt");
       System.out.println("space: "+c.suggestSimilarWord(" "));
-
-
-      String input = "";
-      Scanner scin = new Scanner(System.in);
+      Scanner in = new Scanner(System.in);
       System.out.println("Provide a word");
-      input = scin.next();
+      String input = in.next();
       while(!input.equals("Q")){
         String suggestion = c.suggestSimilarWord(input);
         if(suggestion != null){
@@ -162,7 +156,7 @@ public class SpellChecker implements ISpellChecker {
         }
 
         System.out.println();
-        input = scin.next();
+        input = in.next();
       }
 
     }

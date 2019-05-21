@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Trie implements spellcheck.ITrie {
 
-    // Starts with root node, always
+    // Starts with root node
     private int nodeCount = 1;
 
     private int wordCount = 0;

@@ -45,7 +45,7 @@ public class TrieNode implements spellcheck.ITrie.INode {
 
     public TrieNode getNodeL(char l, Trie motherTrie){
         //  This method is only meant to be used in conjunction with the add method.
-        //  When searching the completed Trie, it is easier to index into nodeArray.
+        //  When searching the complete Trie, it is easier to index into nodeArray.
 
         int index = l - 'a';
 
