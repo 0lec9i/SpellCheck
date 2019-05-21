@@ -9,21 +9,18 @@ import java.io.IOException;
 public class Main {
 	
 	/**
-	 * Give the dictionary file name as the first argument and the word to correct
+	 * Give the dictionary file name as the first argument and the word to check
 	 * as the second argument.
 	 */
 	public static void main(String[] args) throws IOException {
 		
 		String dictionaryFileName = args[0];
 		String inputWord = args[1];
+
+		ISpellChecker checker = new SpellChecker();
 		
-		/**
-		 * Create an instance of your corrector here
-		 */
-		DictionaryLoader corrector = new SpellChecker();
-		
-		corrector.useDictionary(dictionaryFileName);
-		String suggestion = corrector.suggestSimilarWord(inputWord);
+		checker.useDictionary(dictionaryFileName);
+		String suggestion = checker.suggestSimilarWord(inputWord);
 		if (suggestion == null) {
 		    suggestion = "No similar word found";
 		}

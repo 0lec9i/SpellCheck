@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class SpellChecker implements DictionaryLoader {
+public class SpellChecker implements ISpellChecker {
 
     private Trie dictionary = new Trie();
 

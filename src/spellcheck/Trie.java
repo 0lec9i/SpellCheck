@@ -6,9 +6,7 @@ import java.util.List;
 
 public class Trie implements spellcheck.ITrie {
 
-    //  VARIABLES
-
-    // Begins with root node, always
+    // Starts with root node, always
     private int nodeCount = 1;
 
     private int wordCount = 0;
@@ -16,15 +14,13 @@ public class Trie implements spellcheck.ITrie {
     private TrieNode root = new TrieNode();
 
 
-    //  METHODS
-
     public void add(String word) {
 
         word = word.toLowerCase();
 
         ArrayList<String> arrayLetters = new ArrayList<String>(Arrays.asList(word.split("")));
 
-        List<String> letters = (List<String>) arrayLetters;
+        List<String> letters = arrayLetters;
 
         this.root.add(letters, this);
 
@@ -79,11 +75,11 @@ public class Trie implements spellcheck.ITrie {
 
 
     public void incWordCount(){
-        this.wordCount += 1;
+        this.wordCount++;
     }
 
     public void incNodeCount(){
-        this.nodeCount += 1;
+        this.nodeCount++;
     }
 
 
